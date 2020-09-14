@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import io.qameta.allure.Step;
+
 public class LoginPage extends BasePage {
 	@FindBy(css = "[type='email']")
 	private WebElement emailField;
@@ -26,6 +28,7 @@ public class LoginPage extends BasePage {
 		super(driver);
 	}
 
+	@Step("login with user: {emailText} and password: {passwordText}")
 	public void login(String emailText, String passwordText) {
 		fillText(emailField, emailText);
 		fillText(passwordField, passwordText);

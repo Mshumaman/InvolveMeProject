@@ -1,6 +1,5 @@
 package involve.me.pageobjects;
 
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -57,14 +56,12 @@ public class CancellationSurveyPage extends BasePage {
 		click(saleCheckbox);
 		fillText(feedbackTextbox, feedback);
 		click(completeBtn);
-		
-		
 	}
 
 	public void fillSurveyWithoutReason(String email) {
 		fillText(emailField, email);
 		click(completeBtn);
-		
+
 	}
 
 	public void surveySwitchReasons(String email) {
@@ -75,7 +72,6 @@ public class CancellationSurveyPage extends BasePage {
 		click(cancelReason4);
 		click(cancelReason5);
 		click(completeBtn);
-		
 	}
 
 	public void switchToMobileView() {
@@ -93,7 +89,6 @@ public class CancellationSurveyPage extends BasePage {
 	public void goBackBtn() {
 		click(backBtn);
 		wait.until(ExpectedConditions.elementToBeClickable(completeBtn));
-	
 	}
 
 	public void goForwardBtn() {
