@@ -15,6 +15,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
+import utils.AllureAttachment;
 
 @Epic("Login")
 public class LoginPageTests extends BaseTest {
@@ -37,6 +38,9 @@ public class LoginPageTests extends BaseTest {
 
 		// logout
 		lip.logout();
+
+		// link to the login page
+		AllureAttachment.attachURL("https://app.involve.me/login");
 	}
 
 	@Feature("Logging In")
@@ -73,7 +77,6 @@ public class LoginPageTests extends BaseTest {
 	public void tc03_emptyFieldLogin() {
 		LoginPage lp = new LoginPage(driver);
 		lp.login("", "");
-		lp.pressLoginBtn();
 
 		// validation
 		String actual = lp.getEmptyEmailFieldErrMsg("validationMessage");
@@ -119,7 +122,6 @@ public class LoginPageTests extends BaseTest {
 	public void tc06_invalidEmail(String email, String password) {
 		LoginPage lp = new LoginPage(driver);
 		lp.login(email, password);
-		lp.pressLoginBtn();
 
 		// validation
 		String actual = lp.getEmptyEmailFieldErrMsg("validationMessage");
@@ -145,7 +147,6 @@ public class LoginPageTests extends BaseTest {
 	public void tc07_invalidEmail2(String email, String password) {
 		LoginPage lp = new LoginPage(driver);
 		lp.login(email, password);
-		lp.pressLoginBtn();
 
 		// validation
 		String actual = lp.getEmptyEmailFieldErrMsg("validationMessage");
@@ -166,8 +167,8 @@ public class LoginPageTests extends BaseTest {
 	@Feature("Navigating")
 	@Story("Pressing the 'Read More' link should navigate to the page")
 	@Severity(SeverityLevel.MINOR)
-	@Test(description = "test for openning the new features 'read more' page")
-	@Description("Navigating to 'Read More' page")
+	@Test(description = "test for openning the 'New Features' page")
+	@Description("Navigating to 'New Features' page")
 	public void tc08_openReadMore() {
 		LoginPage lp = new LoginPage(driver);
 		String main = driver.getWindowHandle();
@@ -179,10 +180,13 @@ public class LoginPageTests extends BaseTest {
 			driver.switchTo().window(win);
 		}
 		NewFeaturesPage nfp = new NewFeaturesPage(driver);
-		String expected = "NEW FEATURE:\n" + "SEND CUSTOM EMAILS TO PARTICIPANTS";
+		String expected = "INVOLVE.ME CAN COLLECT RECURRING PAYMENTS NOW";
 		String actual = nfp.getHeadlineMsg();
 		Assert.assertEquals(actual, expected);
 		driver.close();
 		driver.switchTo().window(main);
+
+		// Link to the new features page
+		AllureAttachment.attachURL("https://www.involve.me/blog/recurring-payments/");
 	}
 }

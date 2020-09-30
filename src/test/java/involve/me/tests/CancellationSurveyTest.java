@@ -11,6 +11,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
+import utils.AllureAttachment;
 
 @Epic("Cancellation Survey")
 public class CancellationSurveyTest extends BaseTest {
@@ -33,6 +34,9 @@ public class CancellationSurveyTest extends BaseTest {
 		String expected = "What's the reason for your cancellation?";
 		String actual = cs.getCancelReasonMsg();
 		Assert.assertEquals(actual, expected);
+		
+		//Link to the cancellation survey page
+		AllureAttachment.attachURL("https://app.involve.me/template/cancellation-survey");
 	}
 
 	@Feature("Filling the Cancellation Survey")
@@ -125,7 +129,7 @@ public class CancellationSurveyTest extends BaseTest {
 	@Description("Clicking all the cancellation reason")
 	public void tc07_switchingReasons() {
 		CancellationSurveyPage cs = new CancellationSurveyPage(driver);
-		cs.surveySwitchReasons("omri.pointer@gmail.com");
+		cs.surveySwitchReasons("omri.pointer@gmail.com", "testing 1,2,3");
 
 		// validation
 		String expected = "Your cancellation\n" + "has been completed.";

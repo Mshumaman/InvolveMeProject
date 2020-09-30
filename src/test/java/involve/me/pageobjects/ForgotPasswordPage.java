@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import utils.AllureAttachment;
+
 public class ForgotPasswordPage extends BasePage {
 	@FindBy(css = ".form-control.e-zoom-input")
 	private WebElement emailField;
@@ -24,14 +26,17 @@ public class ForgotPasswordPage extends BasePage {
 
 	public void resetPassword(String text) {
 		fillText(emailField, text);
+		AllureAttachment.attachElementScreenshot(resetPasswordBtn);
 		click(resetPasswordBtn);
 	}
 
 	public void openLogin() {
+		AllureAttachment.attachElementScreenshot(loginLink);
 		click(loginLink);
 	}
 
 	public void openRegister() {
+		AllureAttachment.attachElementScreenshot(registerLink);
 		click(registerLink);
 	}
 

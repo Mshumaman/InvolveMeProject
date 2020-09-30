@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
+import utils.AllureAttachment;
+
 public class YourAccountPage extends BasePage {
 	@FindBy(css = "[aria-controls='profile']")
 	private WebElement profileTab;
@@ -51,22 +53,27 @@ public class YourAccountPage extends BasePage {
 	}
 
 	public void openProfileTab() {
+		AllureAttachment.attachElementScreenshot(profileTab);
 		click(profileTab);
 	}
 
 	public void openUpdateInfoTab() {
+		AllureAttachment.attachElementScreenshot(updateInfoTab);
 		click(updateInfoTab);
 	}
 
 	public void openChangePasswordTab() {
+		AllureAttachment.attachElementScreenshot(changePasswordTab);
 		click(changePasswordTab);
 	}
 
 	public void pressConfirmNowBtn() {
+		AllureAttachment.attachElementScreenshot(confirmNowBtn);
 		click(confirmNowBtn);
 	}
 
 	public void pressEditBtn() { // in the profile tab
+		AllureAttachment.attachElementScreenshot(editBtn);
 		click(editBtn);
 	}
 
@@ -76,6 +83,7 @@ public class YourAccountPage extends BasePage {
 		Select timezone = new Select(timezoneMenu);
 		timezone.selectByValue("America/New_York");
 		click(monthlyReportsCheckbox);
+		AllureAttachment.attachElementScreenshot(updateBtn);
 		click(updateBtn);
 
 	}
@@ -84,6 +92,7 @@ public class YourAccountPage extends BasePage {
 		fillText(oldPasswordfield, oldPass);
 		fillText(newPasswordField, newPass);
 		fillText(confirmNewPasswordField, confirmNewPass);
+		AllureAttachment.attachElementScreenshot(updatePasswordBtn);
 		click(updatePasswordBtn);
 	}
 
@@ -99,6 +108,7 @@ public class YourAccountPage extends BasePage {
 	}
 
 	public void pressUpdateBtn() {
+		AllureAttachment.attachElementScreenshot(updateBtn);
 		click(updateBtn);
 	}
 
@@ -113,6 +123,7 @@ public class YourAccountPage extends BasePage {
 	}
 
 	public String getUpdateBtnText() {
+		wait.until(ExpectedConditions.elementToBeClickable(updateBtn));
 		return getText(updateBtn);
 	}
 

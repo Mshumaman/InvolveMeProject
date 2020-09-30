@@ -39,7 +39,6 @@ public class BaseTest {
 		testContext.setAttribute("WebDriver", this.driver);
 		allureEnvironmentWriter(ImmutableMap.<String, String>builder().put("Browser", BrowserName)
 				.put("Browser.Version", BrowserVersion).put("URL", baseUrl).build());
-//		driver.get(baseUrl);
 	}
 
 	@BeforeClass

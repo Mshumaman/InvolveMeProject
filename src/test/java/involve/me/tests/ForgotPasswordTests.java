@@ -13,6 +13,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
+import utils.AllureAttachment;
 
 @Epic("Forgot Password")
 public class ForgotPasswordTests extends BaseTest {
@@ -45,6 +46,9 @@ public class ForgotPasswordTests extends BaseTest {
 		String expected = "A reset link has been sent to the email address, if it has been used to register for an account.";
 		String actual = fpp.getConfirmMassage();
 		Assert.assertEquals(actual, expected);
+		
+		//link to forgot password page
+		AllureAttachment.attachURL("https://app.involve.me/password/reset");
 	}
 
 	@Feature("Reset Password")

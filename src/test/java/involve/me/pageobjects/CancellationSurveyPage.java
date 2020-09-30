@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import utils.AllureAttachment;
+
 public class CancellationSurveyPage extends BasePage {
 	@FindBy(css = ".e-email")
 	private WebElement emailField;
@@ -55,6 +57,7 @@ public class CancellationSurveyPage extends BasePage {
 		click(cancelReason1);
 		click(saleCheckbox);
 		fillText(feedbackTextbox, feedback);
+		AllureAttachment.attachElementScreenshot(completeBtn);
 		click(completeBtn);
 	}
 
@@ -64,34 +67,41 @@ public class CancellationSurveyPage extends BasePage {
 
 	}
 
-	public void surveySwitchReasons(String email) {
+	public void surveySwitchReasons(String email, String feedback) {
 		fillText(emailField, email);
 		click(cancelReason1);
 		click(cancelReason2);
 		click(cancelReason3);
 		click(cancelReason4);
 		click(cancelReason5);
+		fillText(feedbackTextbox, feedback);
+		AllureAttachment.attachElementScreenshot(completeBtn);
 		click(completeBtn);
 	}
 
 	public void switchToMobileView() {
+		AllureAttachment.attachElementScreenshot(mobileView);
 		click(mobileView);
 	}
 
 	public void switchToDesktopView() {
+		AllureAttachment.attachElementScreenshot(desktopView);
 		click(desktopView);
 	}
 
 	public void exitSurvey() {
+		AllureAttachment.attachElementScreenshot(exitSurvey);
 		click(exitSurvey);
 	}
 
 	public void goBackBtn() {
+		AllureAttachment.attachElementScreenshot(backBtn);
 		click(backBtn);
 		wait.until(ExpectedConditions.elementToBeClickable(completeBtn));
 	}
 
 	public void goForwardBtn() {
+		AllureAttachment.attachElementScreenshot(forwardBtn);
 		click(forwardBtn);
 	}
 

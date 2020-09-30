@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import utils.AllureAttachment;
+
 public class NewProjectPage extends BasePage {
 
 	@FindBy(css = "#project-name")
@@ -42,8 +44,8 @@ public class NewProjectPage extends BasePage {
 
 	public void fillProjectForm(String name) {
 		fillText(projectNameField, name);
+		AllureAttachment.attachElementScreenshot(startEditBtn);
 		click(startEditBtn);
-		//wait.until(ExpectedConditions.elementToBeClickable(saveAndExit));
 	}
 
 	public void dragAndDropHeadline() {
@@ -51,6 +53,7 @@ public class NewProjectPage extends BasePage {
 	}
 
 	public void saveAndExitProject() {
+		AllureAttachment.attachElementScreenshot(saveAndExit);
 		click(saveAndExit);
 	}
 
@@ -61,12 +64,14 @@ public class NewProjectPage extends BasePage {
 	}
 
 	public void addNewPage() {
+		AllureAttachment.attachElementScreenshot(newPageBtn);
 		click(newPageBtn);
 		wait.until(ExpectedConditions.elementToBeClickable(deletenewPage));
 	}
 
 	public void deleteNewPage() {
 		click(deletenewPage);
+		AllureAttachment.attachElementScreenshot(confirmDeletePageBtn);
 		click(confirmDeletePageBtn);
 		wait.until(ExpectedConditions.elementToBeClickable(newPageBtn));
 	}

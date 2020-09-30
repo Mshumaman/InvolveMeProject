@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import utils.AllureAttachment;
+
 public class LoggedInPage extends BasePage {
 	@FindBy(css = ".fas.fa-caret-down.ml-2")
 	private WebElement openUserDropDownMenu;
@@ -79,6 +81,7 @@ public class LoggedInPage extends BasePage {
 	}
 
 	public void startNewProject() {
+		AllureAttachment.attachElementScreenshot(newProjectBtn);
 		click(newProjectBtn);
 	}
 
@@ -89,6 +92,7 @@ public class LoggedInPage extends BasePage {
 	public void createNewWorkspace(String name) {
 		click(newWorkspacePlusBtn);
 		fillText(newWorkspaceField, name);
+		AllureAttachment.attachElementScreenshot(createNewWorkspaceBtn);
 		click(createNewWorkspaceBtn);
 		wait.until(ExpectedConditions.elementToBeClickable(firstWorkspace));
 	}
@@ -97,6 +101,7 @@ public class LoggedInPage extends BasePage {
 		click(newProjectDropdownMenu);
 		sleep(500);
 		click(deleteNewProject);
+		AllureAttachment.attachElementScreenshot(deleteProjectConfirmBtn);
 		click(deleteProjectConfirmBtn);
 		wait.until(ExpectedConditions.elementToBeClickable(newProjectBtn));
 	}
@@ -105,6 +110,7 @@ public class LoggedInPage extends BasePage {
 		click(workplaceDropdownMenu);
 		click(deleteWorkspace);
 		fillText(deleteWorkspaceName, name);
+		AllureAttachment.attachElementScreenshot(createNewWorkspaceBtn);
 		click(createNewWorkspaceBtn);
 		wait.until(ExpectedConditions.elementToBeClickable(newProjectBtn));
 	}

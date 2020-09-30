@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import io.qameta.allure.Step;
+import utils.AllureAttachment;
 
 public class LoginPage extends BasePage {
 	@FindBy(css = "[type='email']")
@@ -28,10 +29,11 @@ public class LoginPage extends BasePage {
 		super(driver);
 	}
 
-	@Step("login with user: {emailText} and password: {passwordText}")
-	public void login(String emailText, String passwordText) {
-		fillText(emailField, emailText);
-		fillText(passwordField, passwordText);
+	@Step("Login with user: {email} and password: {password}")
+	public void login(String email, String password) {
+		fillText(emailField, email);
+		fillText(passwordField, password);
+		AllureAttachment.attachElementScreenshot(loginBtn);
 		click(loginBtn);
 	}
 
@@ -41,6 +43,7 @@ public class LoginPage extends BasePage {
 	}
 
 	public void pressLoginBtn() {
+		AllureAttachment.attachElementScreenshot(loginBtn);
 		click(loginBtn);
 	}
 
@@ -53,6 +56,7 @@ public class LoginPage extends BasePage {
 	}
 
 	public void openReadMore() {
+		AllureAttachment.attachElementScreenshot(readMore);
 		click(readMore);
 	}
 

@@ -18,6 +18,7 @@ public class BasePage {
 	JavascriptExecutor js;
 	WebDriverWait wait;
 
+	@SuppressWarnings("deprecation")
 	public BasePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
